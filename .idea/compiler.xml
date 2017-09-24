@@ -6,11 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="Sreeja-RestaurantManagementSystem-RMS" />
         <module name="Sreeja_Restaurant Management System_RMS-VJIT" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Sreeja_Restaurant Management System_RMS-VJIT" target="1.7" />
+    <bytecodeTargetLevel target="1.8">
+      <module name="Sreeja-RestaurantManagementSystem-RMS" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

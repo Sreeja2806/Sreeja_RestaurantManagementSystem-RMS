@@ -176,7 +176,10 @@ public class Login extends javax.swing.JFrame {
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
 
-        if(userName.getText().equalsIgnoreCase("Sreeja") && new String(password.getPassword()).equals("Sreeja123$")){
+        String sa_user = "Sreeja";
+        String sa_pwd = "Sreeja123$";
+
+        if(userName.getText().equalsIgnoreCase(sa_user) && new String(password.getPassword()).equals(sa_pwd)){
 
             JOptionPane.showMessageDialog(this, "Access Granted" + "\nWelcome '" + userName.getText() + "'");
             this.dispose();

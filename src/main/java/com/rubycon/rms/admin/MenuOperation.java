@@ -8,6 +8,7 @@ package com.rubycon.rms.admin;
 //import com.opencsv.CSVReader;
 
 import com.opencsv.CSVReader;
+import com.rubycon.rms.generic.ExportJTable;
 import com.rubycon.rms.generic.Login;
 
 import javax.swing.*;
@@ -42,6 +43,7 @@ public class MenuOperation extends javax.swing.JFrame {
         String[][] rowData = importCSV("Menu.csv").toArray(new String[0][]);
         final String[] columnNames = {"ID", "Name", "Price"};
         final DefaultTableModel model = new DefaultTableModel(rowData, columnNames);
+    ExportJTable export = new ExportJTable();
 
     public MenuOperation() throws IOException {
         initComponents();
@@ -216,7 +218,7 @@ public class MenuOperation extends javax.swing.JFrame {
         Object[] row = {menuIdText.getText(), menuNameText.getText(),  menuPriceText.getText()};
         model.addRow(row);
         menuTable.setModel(model);
-        exportJtable(menuTable,"Menu.csv");
+        export.exportJtable(menuTable,"Menu.csv");
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
@@ -232,7 +234,7 @@ public class MenuOperation extends javax.swing.JFrame {
         else{
             System.out.println("Update Error");
         }
-        exportJtable(menuTable,"Menu.csv");
+        export.exportJtable(menuTable,"Menu.csv");
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void updateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseClicked
@@ -247,7 +249,7 @@ public class MenuOperation extends javax.swing.JFrame {
         else {
             System.out.println("Update Error");
         }
-        exportJtable(menuTable,"Menu_Exported.csv");
+        export.exportJtable(menuTable,"Menu_Exported.csv");
     }//GEN-LAST:event_updateButtonMouseClicked
 
     private void delButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delButtonActionPerformed
@@ -261,7 +263,7 @@ public class MenuOperation extends javax.swing.JFrame {
         else{
             System.out.println("Delete Error");
         }
-        exportJtable(menuTable,"Menu.csv");
+        export.exportJtable(menuTable,"Menu.csv");
     }//GEN-LAST:event_delButtonActionPerformed
 
     private void delButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delButtonMouseClicked
@@ -273,7 +275,7 @@ public class MenuOperation extends javax.swing.JFrame {
             } else {
                 System.out.println("Delete Error");
             }
-            exportJtable(menuTable, "Menu.csv");
+            export.exportJtable(menuTable, "Menu.csv");
         }
     }//GEN-LAST:event_delButtonMouseClicked
 
@@ -292,38 +294,6 @@ public class MenuOperation extends javax.swing.JFrame {
         l.setVisible(true);
     }//GEN-LAST:event_logOutButtonActionPerformed
 
-    private void exportJtable(JTable table, String fileName){
-
-        PrintWriter pw = null;
-        File file = new File(fileName);
-        try {
-            pw = new PrintWriter(new FileOutputStream(file, false));
-            //String menuQuantity = quantity.getText();
-            TableModel model = table.getModel();
-
-            for (int i = 0; i < model.getColumnCount(); i++) {
-                pw.print(model.getColumnName(i));
-                if (i != model.getColumnCount()-1) pw.print(",");
-            }
-            pw.print("\n");
-
-            for (int i = 0; i < model.getRowCount(); i++) {
-                for (int j = 0; j < model.getColumnCount(); j++) {
-                    pw.print(model.getValueAt(i, j).toString());
-                    if (j!=model.getColumnCount()-1)pw.print(",");
-                }
-                pw.print("\n");
-            }
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (pw != null) {
-                pw.flush();
-                pw.close();
-            }
-        }
-    }
 
     /**
      * @param args the command line arguments

@@ -20,9 +20,9 @@ public class RestaurantSystem extends JFrame{
      */
     public static void main(String[] args) {
         // TODO code application logic here
-       Login im = new Login();
-        im.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        im.setVisible(true);
+       Login login = new Login();
+        login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        login.setVisible(true);
         
     }
     

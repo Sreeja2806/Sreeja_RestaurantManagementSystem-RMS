@@ -8,16 +8,12 @@ package com.rubycon.rms.admin;
 //import com.opencsv.CSVReader;
 
 import com.opencsv.CSVReader;
-import com.rubycon.rms.generic.ExportJTable;
 import com.rubycon.rms.generic.Login;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 import java.io.*;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *

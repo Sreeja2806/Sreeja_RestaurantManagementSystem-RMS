@@ -1,4 +1,4 @@
-package com.rubycon.rms.generic;
+package com.rubycon.rms.admin;
 
 import javax.swing.*;
 import javax.swing.table.TableModel;
@@ -7,9 +7,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class ExportJTable {
+class ExportJTable {
 
-    public void exportJtable(JTable table, String fileName) {
+    void exportJtable(JTable table, String fileName) {
         PrintWriter pw = null;
         File file = new File(fileName);
         try {

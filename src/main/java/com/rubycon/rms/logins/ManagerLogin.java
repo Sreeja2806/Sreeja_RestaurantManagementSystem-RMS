@@ -7,7 +7,7 @@ package com.rubycon.rms.logins;
 
 /**
  *
- * @author P.Sreeja
+ * @author Pakeeru Sreeja
  */
 public class ManagerLogin extends javax.swing.JFrame {
 

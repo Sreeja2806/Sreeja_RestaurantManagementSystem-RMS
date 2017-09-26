@@ -7,7 +7,7 @@ package main.java.com.rubycon.rms.orders;
 
 /**
  *
- * @author P.Sreeja
+ * @author Pakeeru Sreeja
  */
 public class ViewOrder extends javax.swing.JFrame {
 

@@ -23,7 +23,7 @@ import java.util.List;
 
 /**
  *
- * @author P.Sreeja
+ * @author Pakeeru Sreeja
  */
 public class Login extends javax.swing.JFrame {
 

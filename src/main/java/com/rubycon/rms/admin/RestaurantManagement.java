@@ -5,7 +5,7 @@
  */
 package com.rubycon.rms.admin;
 
-import com.rubycon.rms.generic.Login;
+import com.rubycon.rms.system.Login;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -182,7 +182,7 @@ public class RestaurantManagement extends javax.swing.JFrame {
     private void empMngButtonActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_empMngButtonActionPerformed
         // TODO add your handling code here:
        //EmployeeManagement l = new EmployeeManagement();
-        EmplooyeeOperation l = new EmplooyeeOperation();
+        EmployeeOperation l = new EmployeeOperation();
        l.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_empMngButtonActionPerformed

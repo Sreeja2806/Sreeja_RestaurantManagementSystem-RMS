@@ -5,7 +5,7 @@
  */
 package com.rubycon.rms.logins;
 
-import com.rubycon.rms.generic.Login;
+import com.rubycon.rms.system.Login;
 
 import javax.swing.*;
 

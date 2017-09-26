@@ -5,10 +5,10 @@
  */
 package com.rubycon.rms.admin;
 
-//import com.opencsv.CSVReader;
-
 import com.opencsv.CSVReader;
-import com.rubycon.rms.generic.Login;
+
+//import com.opencsv.CSVReader;
+import com.rubycon.rms.system.Login;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -20,7 +20,7 @@ import java.util.List;
  *
  * @author P.Sreeja
  */
-public class EmplooyeeOperation extends javax.swing.JFrame {
+public class EmployeeOperation extends javax.swing.JFrame {
     //Import CSV to Table
     private List<String[]> importCSV(String fileName) throws IOException {
         File file= new File(fileName);
@@ -38,12 +38,12 @@ public class EmplooyeeOperation extends javax.swing.JFrame {
         return myEntries;
     }
 
-    String[][] rowData =  importCSV("Emplooyee.csv").toArray(new String[0][]);
+    String[][] rowData =  importCSV("Employee.csv").toArray(new String[0][]);
     final String[] columnNames = {"ID", "Name", "Salary"};
     final DefaultTableModel model = new DefaultTableModel(rowData, columnNames);
     ExportJTable export = new ExportJTable();
 
-    public EmplooyeeOperation() throws IOException {
+    public EmployeeOperation() throws IOException {
         initComponents();
     }
     /**
@@ -56,25 +56,27 @@ public class EmplooyeeOperation extends javax.swing.JFrame {
     private void initComponents() {
 
         pane = new javax.swing.JScrollPane();
-        EmplooyeeTable = new javax.swing.JTable();
+        employeeTable = new javax.swing.JTable();
         updateButton = new javax.swing.JButton();
         addButton = new javax.swing.JButton();
         delButton = new javax.swing.JButton();
-        EmplooyeeIdText = new javax.swing.JTextField();
-        EmplooyeeNameText = new javax.swing.JTextField();
-        EmplooyeeSalaryText = new javax.swing.JTextField();
+        employeeIdText = new javax.swing.JTextField();
+        employeeNameText = new javax.swing.JTextField();
+        employeeSalText = new javax.swing.JTextField();
         idLabel = new javax.swing.JLabel();
-        SalaryLabel = new javax.swing.JLabel();
+        salaryLabel = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
         entityName = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
         logOutButton = new javax.swing.JButton();
+        empTypeLabel = new javax.swing.JLabel();
+        empTypeComboBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 153, 255));
 
-        EmplooyeeTable.setModel(model);
-        pane.setViewportView(EmplooyeeTable);
+        employeeTable.setModel(model);
+        pane.setViewportView(employeeTable);
 
         updateButton.setText("Update");
         updateButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -110,19 +112,19 @@ public class EmplooyeeOperation extends javax.swing.JFrame {
 
         idLabel.setText("Id");
 
-        SalaryLabel.setText("Salary");
-        SalaryLabel.setToolTipText("");
+        salaryLabel.setText("Salary");
+        salaryLabel.setToolTipText("");
 
         nameLabel.setText("Name");
 
-        entityName.setText("Emplooyee Data");
+        entityName.setText("Employee Data");
 
-        jButton6.setBackground(new java.awt.Color(153, 153, 153));
-        jButton6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButton6.setText("Back");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        backButton.setBackground(new java.awt.Color(153, 153, 153));
+        backButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        backButton.setText("Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                backButtonActionPerformed(evt);
             }
         });
 
@@ -136,42 +138,51 @@ public class EmplooyeeOperation extends javax.swing.JFrame {
             }
         });
 
+        empTypeLabel.setText("Employement Type");
+        empTypeLabel.setToolTipText("");
+
+        empTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Host", "Bus Boy", "Manager", "Chef","Line Cook","Server" }));
+        empTypeComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                empTypeComboBoxActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(83, 83, 83)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(salaryLabel)
+                            .addComponent(idLabel)
+                            .addComponent(nameLabel)
+                            .addComponent(empTypeLabel))
+                        .addGap(63, 63, 63)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(addButton)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(SalaryLabel)
-                                            .addComponent(idLabel)
-                                            .addComponent(nameLabel))
-                                        .addGap(63, 63, 63)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(EmplooyeeNameText, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(EmplooyeeSalaryText, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(updateButton))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(1, 1, 1)
-                                                .addComponent(EmplooyeeIdText, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addGap(49, 49, 49)
-                                .addComponent(delButton))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(260, 260, 260)
-                        .addComponent(entityName, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(1, 1, 1)
+                                .addComponent(employeeIdText, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(empTypeComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(employeeNameText, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(employeeSalText, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE))))
+                    .addComponent(pane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(entityName, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(addButton)
+                            .addGap(67, 67, 67)
+                            .addComponent(updateButton)
+                            .addGap(52, 52, 52)
+                            .addComponent(delButton))))
                 .addContainerGap(156, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton6)
+                .addComponent(backButton)
                 .addGap(249, 249, 249)
                 .addComponent(logOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
@@ -181,29 +192,33 @@ public class EmplooyeeOperation extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(EmplooyeeIdText, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(employeeIdText, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(idLabel))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(EmplooyeeNameText, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(employeeNameText, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nameLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(EmplooyeeSalaryText, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SalaryLabel))
-                .addGap(60, 60, 60)
+                    .addComponent(employeeSalText, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(salaryLabel))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(empTypeLabel)
+                    .addComponent(empTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addButton)
                     .addComponent(updateButton)
                     .addComponent(delButton))
-                .addGap(31, 31, 31)
+                .addGap(26, 26, 26)
                 .addComponent(entityName)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(pane, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(logOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6))
+                    .addComponent(backButton))
                 .addContainerGap())
         );
 
@@ -213,76 +228,76 @@ public class EmplooyeeOperation extends javax.swing.JFrame {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
-        Object[] row = {EmplooyeeIdText.getText(), EmplooyeeNameText.getText(),  EmplooyeeSalaryText.getText()};
+        Object[] row = {employeeIdText.getText(), employeeNameText.getText(),  employeeSalText.getText()};
         model.addRow(row);
-        EmplooyeeTable.setModel(model);
-        export.exportJtable(EmplooyeeTable,"Emplooyee.csv");
+        employeeTable.setModel(model);
+        export.exportJtable(employeeTable,"Employee.csv");
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         // TODO add your handling code here:
         // i = the index of the selected row
-        int i = EmplooyeeTable.getSelectedRow();
+        int i = employeeTable.getSelectedRow();
         if(i >= 0)
         {
-            model.setValueAt(EmplooyeeIdText.getText(), i, 0);
-            model.setValueAt(EmplooyeeNameText.getText(), i, 1);
-            model.setValueAt(EmplooyeeSalaryText.getText(), i, 2);
+            model.setValueAt(employeeIdText.getText(), i, 0);
+            model.setValueAt(employeeNameText.getText(), i, 1);
+            model.setValueAt(employeeSalText.getText(), i, 2);
         }
         else{
             System.out.println("Update Error");
         }
-        export.exportJtable(EmplooyeeTable,"Emplooyee.csv");
+        export.exportJtable(employeeTable,"Employee.csv");
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void updateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseClicked
         // TODO add your handling code here:
         // i = the index of the selected row
-        int i = EmplooyeeTable.getSelectedRow();
+        int i = employeeTable.getSelectedRow();
         if(i >= 0) {
-            EmplooyeeIdText.setText(model.getValueAt(i, 0).toString());
-            EmplooyeeNameText.setText(model.getValueAt(i, 1).toString());
-            EmplooyeeSalaryText.setText(model.getValueAt(i, 2).toString());
+            employeeIdText.setText(model.getValueAt(i, 0).toString());
+            employeeNameText.setText(model.getValueAt(i, 1).toString());
+            employeeSalText.setText(model.getValueAt(i, 2).toString());
         }
         else {
             System.out.println("Update Error");
         }
-        export.exportJtable(EmplooyeeTable,"Emplooyee.csv");
+        export.exportJtable(employeeTable,"Employee.csv");
     }//GEN-LAST:event_updateButtonMouseClicked
 
     private void delButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delButtonActionPerformed
         // TODO add your handling code here:
         // i = the index of the selected row
-        int i = EmplooyeeTable.getSelectedRow();
+        int i = employeeTable.getSelectedRow();
         if(i >= 0){
-            // remove a row from jEmplooyeeTable
+            // remove a row from jemployeeTable
             model.removeRow(i);
         }
         else{
             System.out.println("Delete Error");
         }
-        export.exportJtable(EmplooyeeTable,"Emplooyee.csv");
+        export.exportJtable(employeeTable,"Employee.csv");
     }//GEN-LAST:event_delButtonActionPerformed
 
     private void delButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delButtonMouseClicked
         // TODO add your handling code here:
-        int[] i = EmplooyeeTable.getSelectedRows();
+        int[] i = employeeTable.getSelectedRows();
         for (int j : i) {
             if (j >= 0 && j < model.getRowCount()) {
                 model.removeRow(j);
             } else {
                 System.out.println("Delete Error");
             }
-            export.exportJtable(EmplooyeeTable, "Emplooyee.csv");
+            export.exportJtable(employeeTable, "Employee.csv");
         }
     }//GEN-LAST:event_delButtonMouseClicked
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
         RestaurantManagement rm = new RestaurantManagement();
         rm.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_backButtonActionPerformed
 
     private void logOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutButtonActionPerformed
         // TODO add your handling code here:
@@ -291,6 +306,10 @@ public class EmplooyeeOperation extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Successfully Logged Out");
         l.setVisible(true);
     }//GEN-LAST:event_logOutButtonActionPerformed
+
+    private void empTypeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empTypeComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_empTypeComboBoxActionPerformed
 
 
     /**
@@ -310,13 +329,13 @@ public class EmplooyeeOperation extends javax.swing.JFrame {
 //                }
 //            }
 //        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(ViewEmplooyee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(ViewEmployee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(ViewEmplooyee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(ViewEmployee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(ViewEmplooyee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(ViewEmployee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(ViewEmplooyee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(ViewEmployee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
 //        //</editor-fold>
 //        //</editor-fold>
@@ -325,9 +344,9 @@ public class EmplooyeeOperation extends javax.swing.JFrame {
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
 //                try {
-//                    new EmplooyeeOperation().setVisible(true);
+//                    new EmployeeOperation().setVisible(true);
 //                } catch (IOException ex) {
-//                    Logger.getLogger(EmplooyeeOperation.class.getName()).log(Level.SEVERE, null, ex);
+//                    Logger.getLogger(EmployeeOperation.class.getName()).log(Level.SEVERE, null, ex);
 //                }
 //            }
 //        });
@@ -335,18 +354,20 @@ public class EmplooyeeOperation extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
+    private javax.swing.JButton backButton;
     private javax.swing.JButton delButton;
+    private javax.swing.JComboBox<String> empTypeComboBox;
+    private javax.swing.JLabel empTypeLabel;
+    private javax.swing.JTextField employeeIdText;
+    private javax.swing.JTextField employeeNameText;
+    private javax.swing.JTextField employeeSalText;
+    private javax.swing.JTable employeeTable;
     private javax.swing.JLabel entityName;
     private javax.swing.JLabel idLabel;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton logOutButton;
-    private javax.swing.JTextField EmplooyeeIdText;
-    private javax.swing.JTextField EmplooyeeNameText;
-    private javax.swing.JTextField EmplooyeeSalaryText;
-    private javax.swing.JTable EmplooyeeTable;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JScrollPane pane;
-    private javax.swing.JLabel SalaryLabel;
+    private javax.swing.JLabel salaryLabel;
     private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -3,15 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.rubycon.rms.generic;
+package com.rubycon.rms.system;
 
+import com.opencsv.CSVReader;
 import com.rubycon.rms.admin.RestaurantManagement;
+import com.rubycon.rms.logins.BusBoyLogin;
+import com.rubycon.rms.logins.ChefLogin;
+import com.rubycon.rms.logins.HostLogin;
+import com.rubycon.rms.logins.LineCookLogin;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  *
@@ -61,6 +69,12 @@ public class Login extends javax.swing.JFrame {
         unameLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         unameLabel.setText("User Name: ");
 
+        userName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                userNameKeyPressed(evt);
+            }
+        });
+
         passwdLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         passwdLabel.setText("Password :");
 
@@ -86,7 +100,11 @@ public class Login extends javax.swing.JFrame {
         loginButton.setText("Log In");
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginButtonActionPerformed(evt);
+                try {
+                    loginButtonActionPerformed(evt);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -173,26 +191,82 @@ public class Login extends javax.swing.JFrame {
 
 
 
-    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
 
         String sa_user = "Sreeja";
         String sa_pwd = "Sreeja123$";
-
-        if(userName.getText().equalsIgnoreCase(sa_user) && new String(password.getPassword()).equals(sa_pwd)){
-
+        List<String> userInfo = userType(userName.getText(), "Employee.csv");
+        if (userName.getText().equalsIgnoreCase(sa_user) && new String(password.getPassword()).equals(sa_pwd)) {
             JOptionPane.showMessageDialog(this, "Access Granted" + "\nWelcome '" + userName.getText() + "'");
             this.dispose();
             RestaurantManagement rm = new RestaurantManagement();
             rm.setVisible(true);
         }
-        else{
-            userName.setText("");
-            password.setText("");
-            JOptionPane.showMessageDialog(this, userName.getText()+" Access Denied");
-            
+        else if (userInfo.size() == 2) {
+            String userType = userInfo.get(0);
+            String pwd = userInfo.get(1);
+            if (new String(password.getPassword()).equals(pwd)) {
+                if (userType.equalsIgnoreCase("Host")) {
+                    JOptionPane.showMessageDialog(this, "Access Granted" + "\nWelcome '" + userName.getText() + "'");
+                    this.dispose();
+                    HostLogin rm = new HostLogin();
+                    rm.setVisible(true);
+                } else if (userType.equalsIgnoreCase("Boy")) {
+                    JOptionPane.showMessageDialog(this, "Access Granted" + "\nWelcome '" + userName.getText() + "'");
+                    this.dispose();
+                    BusBoyLogin rm = new BusBoyLogin();
+                    rm.setVisible(true);
+                } else if (userType.equalsIgnoreCase("Chef")) {
+                    JOptionPane.showMessageDialog(this, "Access Granted" + "\nWelcome '" + userName.getText() + "'");
+                    this.dispose();
+                    ChefLogin rm = new ChefLogin();
+                    rm.setVisible(true);
+                } else if (userType.equalsIgnoreCase("Line-Cook")) {
+                    JOptionPane.showMessageDialog(this, "Access Granted" + "\nWelcome '" + userName.getText() + "'");
+                    this.dispose();
+                    LineCookLogin rm = new LineCookLogin();
+                    rm.setVisible(true);
+                }
+            }
+//            else if (userType.equalsIgnoreCase("Server")) {
+//                JOptionPane.showMessageDialog(this, "Access Granted" + "\nWelcome '" + userName.getText() + "'");
+//                this.dispose();
+//                ServerBoyLogin rm = new ServerBoyLogin();
+//                rm.setVisible(true);
+//            }
+            else {
+                JOptionPane.showMessageDialog(this, userName.getText() + " Invalid Password");
+            }
+        }
+        else {
+//            userName.setText("");
+//            password.setText("");
+            if (userName.getText().equalsIgnoreCase(sa_user)) {
+                JOptionPane.showMessageDialog(this, "UserID "+userName.getText() + " Access Denied");
+            } else {
+                JOptionPane.showMessageDialog(this, userName.getText() + " Access Denied" + "\n" + userName.getText() + " User Does not exists");
+            }
         }
     }//GEN-LAST:event_loginButtonActionPerformed
+
+    private List<String> userType(String empid, String filename) throws IOException {
+        List<String> l = new ArrayList<>();
+        if (!new File(filename).exists()){
+            return l;
+        }
+        CSVReader reader = new CSVReader(new FileReader(filename), ',');
+        List<String[]> myEntries = reader.readAll();
+        reader.close();
+        for (int row = 0; row< myEntries.size(); row++){
+            if (myEntries.get(row)[0].trim().equalsIgnoreCase(empid)){
+                l = Arrays.asList(myEntries.get(row)[2], myEntries.get(row)[4]);
+            }
+        }
+        System.out.println("List:"+l.size());
+        return l;
+    }
+
 
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
@@ -204,44 +278,18 @@ public class Login extends javax.swing.JFrame {
 
     private void passwordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordKeyPressed
         // TODO add your handling code here:
+        if (evt.getKeyChar() == KeyEvent.VK_ENTER){
+            loginButton.doClick();
+        }
     }//GEN-LAST:event_passwordKeyPressed
 
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new Login().setVisible(true);
-//            }
-//        });
-//    }
+    private void userNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userNameKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyChar() == KeyEvent.VK_ENTER){
+            password.requestFocus();
+        }
+    }//GEN-LAST:event_userNameKeyPressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel RMSPanel;

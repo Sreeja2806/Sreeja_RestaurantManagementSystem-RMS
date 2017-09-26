@@ -139,7 +139,7 @@ public class MenuOperation extends javax.swing.JFrame {
         categoryLabel.setText("Category");
         categoryLabel.setToolTipText("");
 
-        categoryTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        categoryTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Starters", "Main Course", "Indian Bread", "Drinks" }));
         categoryTypeComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 categoryTypeComboBoxActionPerformed(evt);

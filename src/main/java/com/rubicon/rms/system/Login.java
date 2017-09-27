@@ -260,10 +260,9 @@ public class Login extends javax.swing.JFrame {
         reader.close();
         for (int row = 0; row< myEntries.size(); row++){
             if (myEntries.get(row)[0].trim().equalsIgnoreCase(empid)){
-                l = Arrays.asList(myEntries.get(row)[2], myEntries.get(row)[4]);
+                l = Arrays.asList(myEntries.get(row)[2], myEntries.get(row)[3]);
             }
         }
-        System.out.println("List:"+l.size());
         return l;
     }
 

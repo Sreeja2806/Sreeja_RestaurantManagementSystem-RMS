@@ -7,7 +7,7 @@ package com.rubicon.rms.logins;
 
 /**
  *
- * @author Pakeeru Sreeja
+ * @author P Sreeja
  */
 public class ManagerLogin extends javax.swing.JFrame {
 

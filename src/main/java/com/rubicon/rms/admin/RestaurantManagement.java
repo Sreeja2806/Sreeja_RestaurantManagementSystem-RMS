@@ -12,7 +12,7 @@ import java.io.IOException;
 
 /**
  *
- * @author Pakeeru Sreeja
+ * @author P Sreeja
  */
 public class RestaurantManagement extends javax.swing.JFrame {
 

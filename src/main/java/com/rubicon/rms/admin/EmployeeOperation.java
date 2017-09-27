@@ -18,7 +18,7 @@ import java.util.List;
 
 /**
  *
- * @author Pakeeru Sreeja
+ * @author P Sreeja
  */
 public class EmployeeOperation extends javax.swing.JFrame {
     //Import CSV to Table

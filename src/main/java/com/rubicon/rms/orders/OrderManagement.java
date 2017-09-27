@@ -7,7 +7,7 @@ package com.rubicon.rms.orders;
 
 /**
  *
- * @author Pakeeru Sreeja
+ * @author P Sreeja
  */
 public class OrderManagement extends javax.swing.JFrame {
 

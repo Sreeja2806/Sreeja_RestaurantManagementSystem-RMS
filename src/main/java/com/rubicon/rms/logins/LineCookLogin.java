@@ -11,7 +11,7 @@ import javax.swing.*;
 
 /**
  *
- * @author Pakeeru Sreeja
+ * @author P Sreeja
  */
 public class LineCookLogin extends javax.swing.JFrame {
 

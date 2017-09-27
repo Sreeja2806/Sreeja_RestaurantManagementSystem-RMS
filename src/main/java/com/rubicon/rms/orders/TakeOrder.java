@@ -7,7 +7,7 @@ package com.rubicon.rms.orders;
 
 /**
  *
- * @author Pakeeru Sreeja
+ * @author P Sreeja
  */
 public class TakeOrder extends javax.swing.JFrame {
 

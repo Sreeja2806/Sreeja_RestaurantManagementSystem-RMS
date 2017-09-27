@@ -11,7 +11,7 @@ import javax.swing.*;
 
 /**
  *
- * @author P Sreeja
+ * @author Pakeeru Sreeja
  */
 public class HostLogin extends javax.swing.JFrame {
 

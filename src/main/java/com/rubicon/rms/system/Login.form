@@ -222,7 +222,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="14" style="3"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Restaurant Management System - RMS  (Developed by P Sreeja) VJIT"/>
+        <Property name="text" type="java.lang.String" value="Restaurant Management System - RMS  (Developed by Pakeeru Sreeja) VJIT"/>
       </Properties>
     </Component>
   </SubComponents>

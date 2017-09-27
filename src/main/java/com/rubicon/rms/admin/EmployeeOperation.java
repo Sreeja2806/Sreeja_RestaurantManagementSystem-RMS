@@ -23,7 +23,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author P Sreeja
+ * @author Pakeeru Sreeja
  */
 public class EmployeeOperation extends javax.swing.JFrame {
     //Import CSV to Table

@@ -23,7 +23,7 @@ import java.util.List;
 
 /**
  *
- * @author P Sreeja
+ * @author Pakeeru Sreeja
  */
 public class Login extends javax.swing.JFrame {
 
@@ -159,7 +159,7 @@ public class Login extends javax.swing.JFrame {
         );
 
         RMSPanel.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        RMSPanel.setText("Restaurant Management System - RMS  (Developed by P Sreeja) VJIT");
+        RMSPanel.setText("Restaurant Management System - RMS  (Developed by Pakeeru Sreeja) VJIT");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

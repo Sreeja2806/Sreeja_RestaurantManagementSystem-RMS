@@ -7,7 +7,7 @@ package com.rubicon.rms.orders;
 
 /**
  *
- * @author P Sreeja
+ * @author Pakeeru Sreeja
  */
 public class ModifyOrder extends javax.swing.JFrame {
 

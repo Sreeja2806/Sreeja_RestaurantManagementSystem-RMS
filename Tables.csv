@@ -1,1 +1,5 @@
-ID,Category,Name,Price
+ID,Capacity,Status
+1,2, Available
+2,4, Available
+3,8, Available
+4,12, Available

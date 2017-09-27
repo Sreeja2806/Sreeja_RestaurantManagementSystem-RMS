@@ -27,6 +27,7 @@ import java.util.List;
  */
 public class Login extends javax.swing.JFrame {
 
+
     /**
      * Intializes new form LogIn
      */
@@ -34,6 +35,17 @@ public class Login extends javax.swing.JFrame {
         initComponents();
     }
 
+    public String getID() {
+        return userName.getText();
+    }
+
+    @Override
+    public String getName() {
+        return userName.getText();
+    }
+
+    private String ID;
+    private String Name;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -203,9 +215,9 @@ public class Login extends javax.swing.JFrame {
             RestaurantManagement rm = new RestaurantManagement();
             rm.setVisible(true);
         }
-        else if (userInfo.size() == 2) {
-            String userType = userInfo.get(0);
-            String pwd = userInfo.get(1);
+        else if (userInfo.size() == 4) {
+            String userType = userInfo.get(2);
+            String pwd = userInfo.get(3);
             if (new String(password.getPassword()).equals(pwd)) {
                 if (userType.equalsIgnoreCase("Host")) {
                     JOptionPane.showMessageDialog(this, "Access Granted" + "\nWelcome '" + userName.getText() + "'");
@@ -228,13 +240,15 @@ public class Login extends javax.swing.JFrame {
                     LineCookLogin rm = new LineCookLogin();
                     rm.setVisible(true);
                 }
-            }
+
 //            else if (userType.equalsIgnoreCase("Server")) {
 //                JOptionPane.showMessageDialog(this, "Access Granted" + "\nWelcome '" + userName.getText() + "'");
 //                this.dispose();
 //                ServerBoyLogin rm = new ServerBoyLogin();
 //                rm.setVisible(true);
 //            }
+
+            }
             else {
                 JOptionPane.showMessageDialog(this, userName.getText() + " Invalid Password");
             }
@@ -260,7 +274,8 @@ public class Login extends javax.swing.JFrame {
         reader.close();
         for (int row = 0; row< myEntries.size(); row++){
             if (myEntries.get(row)[0].trim().equalsIgnoreCase(empid)){
-                l = Arrays.asList(myEntries.get(row)[2], myEntries.get(row)[3]);
+                l = Arrays.asList(myEntries.get(row)[0], myEntries.get(row)[1], myEntries.get(row)[2], myEntries.get(row)[3]);
+                System.out.println(myEntries.get(row)[0]);
             }
         }
         return l;

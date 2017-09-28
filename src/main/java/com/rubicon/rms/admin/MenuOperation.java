@@ -39,7 +39,7 @@ public class MenuOperation extends javax.swing.JFrame {
         String[][] rowData = importCSV("Menu.csv").toArray(new String[0][]);
         final String[] columnNames = {"ID", "Name", "Price"};
         final DefaultTableModel model = new DefaultTableModel(rowData, columnNames);
-    ExportJTable export = new ExportJTable();
+        ExportJTable export = new ExportJTable();
 
     public MenuOperation() throws IOException {
         initComponents();

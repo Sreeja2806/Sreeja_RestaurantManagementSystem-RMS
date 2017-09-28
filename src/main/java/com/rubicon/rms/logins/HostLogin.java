@@ -5,9 +5,15 @@
  */
 package com.rubicon.rms.logins;
 
+import com.rubicon.rms.admin.ExportJTable;
 import com.rubicon.rms.system.Login;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -15,10 +21,17 @@ import javax.swing.*;
  */
 public class HostLogin extends javax.swing.JFrame {
 
+    ImportData i = new ImportData();
+    String[][] rowData =  i.importData("Order.csv").toArray(new String[0][]);
+    final String[] columnNames = {"HostId","BusBoyID","ManagerId","ChefId","LineCookId","ServerId","CustomerId","Customer Name","No: Persons","TableId","OrderId","Order Details","Bill","Feedback","Status"};
+    final String[] hideCols = {"HostId","BusBoyID","ManagerId","ChefId","LineCookId","ServerId","No: Persons","Order Details","Bill","Feedback","Status"};
+    final DefaultTableModel model = new DefaultTableModel(rowData, columnNames);
+    ExportJTable export = new ExportJTable();
+
     /**
      * Creates new form HostLogin
      */
-    public HostLogin() {
+    public HostLogin() throws IOException {
         initComponents();
     }
 
@@ -31,6 +44,8 @@ public class HostLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         employeeIDLabel = new javax.swing.JLabel();
         hostLoginPanel = new javax.swing.JLayeredPane();
         NameLabel = new javax.swing.JLabel();
@@ -40,7 +55,6 @@ public class HostLogin extends javax.swing.JFrame {
         contactLabel = new javax.swing.JLabel();
         contactTextField = new javax.swing.JTextField();
         cancelButton = new javax.swing.JButton();
-        resetButton = new javax.swing.JButton();
         tableComboBox = new javax.swing.JComboBox<>();
         tableLabel = new javax.swing.JLabel();
         bookButton = new javax.swing.JButton();
@@ -48,6 +62,22 @@ public class HostLogin extends javax.swing.JFrame {
         empIDLabel = new javax.swing.JLabel();
         employeeNameLabel = new javax.swing.JLabel();
         empNameLabel = new javax.swing.JLabel();
+        submittedPanel = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        submittedTable = new javax.swing.JTable();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,7 +87,6 @@ public class HostLogin extends javax.swing.JFrame {
 
         NameLabel.setText("Name");
 
-        nameTextField.setText("jTextField1");
         nameTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nameTextFieldActionPerformed(evt);
@@ -66,23 +95,14 @@ public class HostLogin extends javax.swing.JFrame {
 
         numberLabel.setText("No: of Persons");
 
-        numberTextField.setText("jTextField1");
 
         contactLabel.setText("Contact Details");
 
-        contactTextField.setText("jTextField1");
 
         cancelButton.setText("Cancel");
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelButtonActionPerformed(evt);
-            }
-        });
-
-        resetButton.setText("Reset");
-        resetButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resetButtonActionPerformed(evt);
             }
         });
 
@@ -104,7 +124,6 @@ public class HostLogin extends javax.swing.JFrame {
         hostLoginPanel.setLayer(contactLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         hostLoginPanel.setLayer(contactTextField, javax.swing.JLayeredPane.DEFAULT_LAYER);
         hostLoginPanel.setLayer(cancelButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        hostLoginPanel.setLayer(resetButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
         hostLoginPanel.setLayer(tableComboBox, javax.swing.JLayeredPane.DEFAULT_LAYER);
         hostLoginPanel.setLayer(tableLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         hostLoginPanel.setLayer(bookButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -120,27 +139,31 @@ public class HostLogin extends javax.swing.JFrame {
                         .addGroup(hostLoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(NameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(numberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(57, 57, 57)
-                        .addGroup(hostLoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(numberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(hostLoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(hostLoginPanelLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(hostLoginPanelLayout.createSequentialGroup()
+                                .addGap(57, 57, 57)
+                                .addComponent(numberTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))))
                     .addGroup(hostLoginPanelLayout.createSequentialGroup()
                         .addGroup(hostLoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(contactLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tableLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(57, 57, 57)
-                        .addGroup(hostLoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(tableComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(contactTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(hostLoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(hostLoginPanelLayout.createSequentialGroup()
+                                .addGap(57, 57, 57)
+                                .addComponent(contactTextField))
+                            .addGroup(hostLoginPanelLayout.createSequentialGroup()
+                                .addGap(62, 62, 62)
+                                .addComponent(tableComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addGap(140, 140, 140))
             .addGroup(hostLoginPanelLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(38, 38, 38)
                 .addComponent(bookButton)
-                .addGap(70, 70, 70)
-                .addComponent(resetButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(cancelButton)
-                .addContainerGap())
+                .addGap(31, 31, 31))
         );
         hostLoginPanelLayout.setVerticalGroup(
             hostLoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,12 +185,11 @@ public class HostLogin extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(tableComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(tableLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(hostLoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(resetButton)
-                    .addComponent(cancelButton)
-                    .addComponent(bookButton))
-                .addGap(81, 81, 81))
+                    .addComponent(bookButton)
+                    .addComponent(cancelButton))
+                .addGap(10, 10, 10))
         );
 
         logOutButton.setBackground(new java.awt.Color(0, 0, 0));
@@ -185,50 +207,82 @@ public class HostLogin extends javax.swing.JFrame {
         employeeNameLabel.setText("Emplooyee Name:");
 
         empNameLabel.setText(" ");
-        
+
+        submittedPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Submissions", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP));
+
+        submittedTable.setModel(model);
+        jScrollPane2.setViewportView(submittedTable);
+        hideColumn(submittedTable,hideCols);
+
+        javax.swing.GroupLayout submittedPanelLayout = new javax.swing.GroupLayout(submittedPanel);
+        submittedPanel.setLayout(submittedPanelLayout);
+        submittedPanelLayout.setHorizontalGroup(
+            submittedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(submittedPanelLayout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
+                .addGap(28, 28, 28))
+        );
+        submittedPanelLayout.setVerticalGroup(
+            submittedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(submittedPanelLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(logOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(192, 192, 192))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(employeeIDLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(empIDLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(employeeNameLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(empNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(employeeIDLabel)
+                                        .addGap(21, 21, 21))
+                                    .addComponent(employeeNameLabel, javax.swing.GroupLayout.Alignment.LEADING)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addComponent(hostLoginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(empIDLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(empNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(hostLoginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                        .addGap(190, 190, 190)
+                        .addComponent(logOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(submittedPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(employeeIDLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(empIDLabel))
+                .addContainerGap()
+                .addComponent(employeeIDLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(employeeNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(empNameLabel))
+                .addComponent(employeeNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(empIDLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(hostLoginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(submittedPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(empNameLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(hostLoginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
                 .addComponent(logOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58))
+                .addGap(55, 55, 55))
         );
 
         pack();
@@ -242,6 +296,15 @@ public class HostLogin extends javax.swing.JFrame {
 //        empNameLabel.setText(userName);
 //    }
 
+    private void hideColumn(JTable table, String[] cols) {
+        for (String col : cols) {
+            //table.removeColumn(table.getColumn(col));
+            table.getColumn(col).setPreferredWidth(0);
+            table.getColumn(col).setMinWidth(0);
+            table.getColumn(col).setWidth(0);
+            table.getColumn(col).setMaxWidth(0);
+        }
+    }
     private void nameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nameTextFieldActionPerformed
@@ -250,12 +313,14 @@ public class HostLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cancelButtonActionPerformed
 
-    private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_resetButtonActionPerformed
-
     private void bookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookButtonActionPerformed
         // TODO add your handling code here:
+        Object[] row = {"HostId", "","", "", "", "", "1234", nameTextField.getText(), numberTextField.getText(), tableComboBox.getSelectedItem(), "123", contactTextField.getText(), "Bill", "Feedback", "Progress"};
+        model.addRow(row);
+        //hideColumn(submittedTable,hideCols);
+        submittedTable.setModel(model);
+        export.exportJtable(submittedTable,"Order.csv");
+    //export
     }//GEN-LAST:event_bookButtonActionPerformed
 
     private void logOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutButtonActionPerformed
@@ -296,7 +361,11 @@ public class HostLogin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HostLogin().setVisible(true);
+                try {
+                    new HostLogin().setVisible(true);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
@@ -312,11 +381,15 @@ public class HostLogin extends javax.swing.JFrame {
     private javax.swing.JLabel employeeIDLabel;
     private javax.swing.JLabel employeeNameLabel;
     private javax.swing.JLayeredPane hostLoginPanel;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     private javax.swing.JButton logOutButton;
     private javax.swing.JTextField nameTextField;
     private javax.swing.JLabel numberLabel;
     private javax.swing.JTextField numberTextField;
-    private javax.swing.JButton resetButton;
+    private javax.swing.JPanel submittedPanel;
+    private javax.swing.JTable submittedTable;
     private javax.swing.JComboBox<String> tableComboBox;
     private javax.swing.JLabel tableLabel;
     // End of variables declaration//GEN-END:variables

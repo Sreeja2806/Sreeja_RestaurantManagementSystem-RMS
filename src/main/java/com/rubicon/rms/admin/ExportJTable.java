@@ -7,9 +7,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-class ExportJTable {
+public class ExportJTable {
 
-    void exportJtable(JTable table, String fileName) {
+    public void exportJtable(JTable table, String fileName) {
         PrintWriter pw = null;
         File file = new File(fileName);
         try {

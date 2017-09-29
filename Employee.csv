@@ -3,6 +3,6 @@ ID,Name,EmployeeType,Password,Salary
 1002,Rahim,Bus-Boy,,15000
 1003,Raghu,Host,Host123$,15000
 1004,Madhu,Host,Host123$,15000
-1005,Mohan,Manager,,50000
+1005,Mohan,Manager,Manager123$,50000
 1006,Shyam,Manager,,Manager
 1007,Sai,Chef,,Manager

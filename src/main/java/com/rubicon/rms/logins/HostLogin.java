@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  *
- * @author P. Sreeja-VJIT
+ * @author P Sreeja-VJIT
  */
 public class HostLogin extends javax.swing.JFrame {
 

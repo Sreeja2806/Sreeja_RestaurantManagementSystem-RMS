@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  *
- * @author P. Sreeja-VJIT
+ * @author P Sreeja-VJIT
  */
 public class BillManagement extends javax.swing.JFrame {
 

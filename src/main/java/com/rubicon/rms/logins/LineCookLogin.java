@@ -11,7 +11,7 @@ import javax.swing.*;
 
 /**
  *
- * @author Pakeeru Sreeja
+ * @author P. Sreeja-VJIT
  */
 public class LineCookLogin extends javax.swing.JFrame {
 
@@ -302,9 +302,6 @@ public class LineCookLogin extends javax.swing.JFrame {
         l.setVisible(true);
     }//GEN-LAST:event_logOutButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

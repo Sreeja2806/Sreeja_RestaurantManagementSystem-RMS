@@ -1,13 +1,17 @@
 package com.rubicon.rms.orders;
 
 import com.opencsv.CSVReader;
-import com.rubicon.rms.admin.OrderManagement;
+import com.rubicon.rms.admin.OrderOperation;
 import com.rubicon.rms.admin.RestaurantManagement;
 
 import javax.swing.*;
 import java.io.*;
 import java.util.List;
 
+/**
+ *
+ * @author P. Sreeja-VJIT
+ */
 public class BillManagement extends javax.swing.JFrame {
 
     private List<String[]> importCSV(String fileName, String cols) throws IOException {
@@ -22,13 +26,12 @@ public class BillManagement extends javax.swing.JFrame {
             pw.close();
         }
         CSVReader reader = new CSVReader(new FileReader(fileName), ',', '\'', 1);
-        List<String[]> myEntries = reader.readAll();
-        return myEntries;
+        return reader.readAll();
     }
 
     private CalculateTotal it ;
     private OrderDetails o;
-    private TotalPrice t;
+    private TotalBil t;
     private String name;
     private String quantity ;
     private double totalPrice=0;
@@ -58,8 +61,8 @@ public class BillManagement extends javax.swing.JFrame {
         display();
         performFileRelatedTask();
     }
-    public void display() throws IOException {
-        t = new TotalPrice();
+    private void display() throws IOException {
+        t = new TotalBil();
         it = new CalculateTotal();
         menuTextArea.setText(t.getFullNames().toString());
 
@@ -73,11 +76,7 @@ public class BillManagement extends javax.swing.JFrame {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //  RestaurentManagement r= new RestaurentManagement();
-        // r.setVisible(true);
-        // this.dispose();
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -196,7 +195,7 @@ public class BillManagement extends javax.swing.JFrame {
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
 
-        OrderManagement om = new OrderManagement();
+        OrderOperation om = new OrderOperation();
         om.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_backButtonActionPerformed
@@ -204,7 +203,7 @@ public class BillManagement extends javax.swing.JFrame {
     private void paymentButtonActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_paymentButtonActionPerformed
         // TODO add your handling code here:
         o.delete();
-        t = new TotalPrice();
+        t = new TotalBil();
 
         RestaurantManagement rm = new RestaurantManagement();
         rm.setVisible(true);
@@ -220,7 +219,7 @@ public class BillManagement extends javax.swing.JFrame {
             pw1.close();;
             pw2.close();
             pw3.close();
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
     }//GEN-LAST:event_paymentButtonActionPerformed
 
@@ -240,50 +239,11 @@ public class BillManagement extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_printButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(BillManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(BillManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(BillManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(BillManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                try {
-//                    new BillManagement().setVisible(true);
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        });
-//    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
     private javax.swing.JPanel billPanel;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTextArea menuTextArea;
+    private javax.swing.JTextArea menuTextArea;
     private javax.swing.JButton paymentButton;
     private javax.swing.JButton printButton;
     private javax.swing.JTextField totalPriceArea;

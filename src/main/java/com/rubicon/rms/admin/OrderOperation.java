@@ -1,15 +1,8 @@
 package com.rubicon.rms.admin;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-import com.rubicon.rms.admin.RestaurantManagement;
 import com.rubicon.rms.orders.BillManagement;
 import com.rubicon.rms.orders.OrderDetails;
-import com.rubicon.rms.orders.ReceiptFile;
+import com.rubicon.rms.orders.GenerateReceipt;
 
 import javax.swing.*;
 import java.io.FileInputStream;
@@ -18,9 +11,13 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
-public class OrderManagement extends javax.swing.JFrame {
+/**
+ *
+ * @author P. Sreeja-VJIT
+ */
+public class OrderOperation extends javax.swing.JFrame {
     private OrderDetails o;
-    private ReceiptFile r;
+    private GenerateReceipt r;
     private String srcName;
     private String modName;
     private String modPrice;
@@ -29,9 +26,9 @@ public class OrderManagement extends javax.swing.JFrame {
     protected BillManagement b;
     private PrintWriter pw;
     /**
-     * Creates new form OrderManagement
+     * Creates new form OrderOperation
      */
-    public OrderManagement() throws IOException {
+    public OrderOperation() throws IOException {
         initComponents();
         performFileRelatedTask();
     }
@@ -380,15 +377,11 @@ public class OrderManagement extends javax.swing.JFrame {
                 q =sc.nextLine();
                 // setSrchName(n);
                 // setQuantity(quantity);
-
                 receiptArea.setText(n+"\t"+ q+"\n");
-
-
-
             }
             System.out.println("End of reading temp file");
             sc.close();
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
     }
     private void addItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addItemActionPerformed
@@ -411,9 +404,9 @@ public class OrderManagement extends javax.swing.JFrame {
             System.out.println("will be modified "+srcName);
             System.out.println("will be modified "+pass);
 
-            r = new ReceiptFile();
+            r = new GenerateReceipt();
             receiptArea.setText(r.getFullNames().toString());
-            totalPriceField.setText("Total price : "+r.getSum().toString());
+            totalPriceField.setText("Total price : "+ r.getSum());
             try {
                 pw = new PrintWriter(new FileOutputStream("Order.csv",true));
                 pw.print(r.getName()+",");
@@ -421,11 +414,9 @@ public class OrderManagement extends javax.swing.JFrame {
                 pw.print(r.getMulti()+",");
                 pw.print("\n");
                 pw.close();
-            } catch (Exception e) {
-            }
-            //JOptionPane.showMessageDialog(this, "OrderDetails ");
-            //}
+            } catch (Exception ignored) {
 
+            }
         }//GEN-LAST:event_addItemActionPerformed
     }
     /**

@@ -3,12 +3,16 @@ package com.rubicon.rms.orders;
 import java.io.FileInputStream;
 import java.util.Scanner;
 
+/**
+ *
+ * @author P. Sreeja-VJIT
+ */
 public class CalculateTotal {
-    public Scanner scan;
-    public double total=0;
+    private Scanner scan;
+    private double total=0;
     public String price;
 
-    public String getTotal() {
+    String getTotal() {
 
         try{
             scan = new Scanner(new FileInputStream("Order.csv"));

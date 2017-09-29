@@ -9,7 +9,7 @@ import javax.swing.*;
 
 /**
  *
- * @author Pakeeru Sreeja
+ * @author P. Sreeja-VJIT
  */
 public class RestaurantSystem extends JFrame{
 

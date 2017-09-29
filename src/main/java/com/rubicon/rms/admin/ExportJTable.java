@@ -7,6 +7,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+/**
+ *
+ * @author P. Sreeja-VJIT
+ */
 public class ExportJTable {
 
     public void exportJtable(JTable table, String fileName) {

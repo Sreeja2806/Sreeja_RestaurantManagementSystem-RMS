@@ -6,7 +6,11 @@ import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
-public class ReceiptFile {
+/**
+ *
+ * @author P. Sreeja-VJIT
+ */
+public class GenerateReceipt {
     private Scanner sc;
     private Scanner scan;
     private String name;
@@ -18,7 +22,7 @@ public class ReceiptFile {
     private double multi;
     private double sum=0;
     private PrintWriter pw;
-    public ReceiptFile()
+    public GenerateReceipt()
     {
         fullnames = new StringBuilder();
         openFile();
@@ -78,20 +82,13 @@ public class ReceiptFile {
                 multi=dPrice*dQuantity;
                 sum+=multi;
 
-                fullnames.append(name + " \t"+quantity+"\t"+multi+ "\n");
-
+                fullnames.append(name).append(" \t").append(quantity).append("\t").append(multi).append("\n");
                 //   write();
-
-
             }
         }
         catch(Exception e){
             System.out.println(e);
         }
-
-
-
-
     }
 
     private void closeFile()
@@ -100,18 +97,6 @@ public class ReceiptFile {
         sc.close();
         pw.close();
     }
-    
-    /*public void write(){
-        try {
-               pw = new PrintWriter(new FileOutputStream("Order.csv",true));
-                pw.println(name);
-                pw.println(quantity);
-                pw.println(multi);
-                pw.close();
-        } catch (Exception e) {
-        }
-    }
-    */
 
     public String getName() {
         return name;

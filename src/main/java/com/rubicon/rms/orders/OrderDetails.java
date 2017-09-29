@@ -5,15 +5,15 @@ import com.opencsv.CSVReader;
 import java.io.*;
 import java.util.Scanner;
 
+/**
+ *
+ * @author P. Sreeja-VJIT
+ */
 public class OrderDetails {
-    //  protected OrderManagement o = new OrderManagement();
     private Scanner scan;
     private String srchName;
-    private int num=1;
-    private String s1,s2;
 
     private String name;
-    private int cngQuantity;
 
     private String price;
     private String quantity;
@@ -53,10 +53,10 @@ public class OrderDetails {
         else {System.out.println("File found!");}
     }
 
-    public void setSrchName(String srchName) {
+    private void setSrchName(String srchName) {
         this.srchName = srchName;
     }
-    public String getSrchName() {
+    private String getSrchName() {
         return srchName;
     }
     public void setName(String name) {
@@ -70,7 +70,7 @@ public class OrderDetails {
         this.price = price;
     }
 
-    public void setQuantity(String quantity) {
+    private void setQuantity(String quantity) {
         this.quantity = quantity;
     }
 
@@ -78,7 +78,7 @@ public class OrderDetails {
         return price;
     }
 
-    public String getQuantity() {
+    private String getQuantity() {
         return quantity;
     }
 
@@ -96,6 +96,7 @@ public class OrderDetails {
                 quantity = "1";
                 price = orderDetails[3];
 
+                int num = 1;
                 fullnames.append(num + "," + name + "," + price + "," + quantity + "\n");
             }
         } catch (IOException e) {
@@ -110,26 +111,7 @@ public class OrderDetails {
         }
     }
 
-//        try{
-//            while(scan.hasNextLine())
-//            {
-//                name = scan.nextLine();
-//                price = scan.nextLine();
-//                quantity=scan.nextLine();
-//                fullnames.append(num+"\t"+name + " \t" + price + " \t"+quantity+"\n");
-//                num++;
-//            }
-//        }
-//        catch(Exception e){
-//            System.out.println(e);
-//        }
-//    }
-//    private void closeFile()
-//    {
-//        scan.close();
-//    }
-
-    public  void ModifyItem(){
+    private void ModifyItem(){
         String srcKey=getSrchName();
         System.out.println(srcKey +" is going to be changed in quantity");
 
@@ -155,9 +137,7 @@ public class OrderDetails {
                     System.out.println("Index will be deleted" +c);
                 }
                 c++;
-
             }
-
 
         }
         catch(Exception e){
@@ -169,12 +149,11 @@ public class OrderDetails {
             PrintWriter pw = new PrintWriter(new FileOutputStream("Menu.csv"));
             for (int i = 0; i < c; i++) {
                 if(i==temp+2){
-                    cngQuantity= Integer.decode(itemName[i]);
+                    int cngQuantity = Integer.decode(itemName[i]);
 
-                    cngQuantity=cngQuantity-Integer.decode(getQuantity());
+                    cngQuantity = cngQuantity -Integer.decode(getQuantity());
                     pw.println(cngQuantity);
                     System.out.println("Value has been changed ");
-
                 }
                 else{
                     pw.println(itemName[i]);
@@ -184,9 +163,8 @@ public class OrderDetails {
             System.out.println("Your item has been deleted.");
             pw.close();
         }
-        catch (Exception e) {
+        catch (Exception ignored) {
         }
-
 
     }
 
@@ -224,10 +202,10 @@ public class OrderDetails {
             Scanner sc = new Scanner(new FileInputStream("Menu.csv"));
             for(int j=1;sc.hasNextLine(); j++){
                 if (j==n){
-                    s1 = sc.nextLine();
+                    String s1 = sc.nextLine();
                     pw.println(s1);
 
-                    s2 = sc.nextLine();
+                    String s2 = sc.nextLine();
                     pw.println(i);
                     sc.nextLine();
                 } else {sc.nextLine();sc.nextLine();sc.nextLine();}
@@ -248,10 +226,10 @@ public class OrderDetails {
                */
 
 
-        } catch (Exception e) {}
+        } catch (Exception ignored) {}
         //delete();
     }
-    public void delete(){
+    void delete(){
         String name ="";
         String quantity="";
         try {
@@ -268,7 +246,7 @@ public class OrderDetails {
             }
             System.out.println("End of reading temp file");
             sc.close();
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
 
     }
@@ -282,7 +260,7 @@ public class OrderDetails {
                 name = sc.nextLine();
                 //price = scan.nextLine();
                 quantity=sc.nextLine(); // + " \t"+quantity+
-                receiptName.append(name + " \t" + quantity +"\n");
+                receiptName.append(name).append(" \t").append(quantity).append("\n");
             }
             sc.close();
         }
@@ -290,7 +268,4 @@ public class OrderDetails {
             System.out.println(e);
         }
     }
-
-
-
 }

@@ -7,10 +7,7 @@ package com.rubicon.rms.system;
 
 import com.opencsv.CSVReader;
 import com.rubicon.rms.admin.RestaurantManagement;
-import com.rubicon.rms.logins.BusBoyLogin;
-import com.rubicon.rms.logins.ChefLogin;
-import com.rubicon.rms.logins.HostLogin;
-import com.rubicon.rms.logins.LineCookLogin;
+import com.rubicon.rms.logins.*;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
@@ -209,6 +206,7 @@ public class Login extends javax.swing.JFrame {
         String sa_user = "Sreeja";
         String sa_pwd = "Sreeja123$";
         List<String> userInfo = userType(userName.getText(), "Employee.csv");
+
         if (userName.getText().equalsIgnoreCase(sa_user) && new String(password.getPassword()).equals(sa_pwd)) {
             JOptionPane.showMessageDialog(this, "Access Granted" + "\nWelcome '" + userName.getText() + "'");
             this.dispose();
@@ -238,6 +236,12 @@ public class Login extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Access Granted" + "\nWelcome '" + userName.getText() + "'");
                     this.dispose();
                     LineCookLogin rm = new LineCookLogin();
+                    rm.setVisible(true);
+                }
+                else if (userType.equalsIgnoreCase("Manager")) {
+                    JOptionPane.showMessageDialog(this, "Access Granted" + "\nWelcome '" + userName.getText() + "'");
+                    this.dispose();
+                    ManagerLogin rm = new ManagerLogin();
                     rm.setVisible(true);
                 }
 

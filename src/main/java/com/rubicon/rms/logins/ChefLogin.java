@@ -84,7 +84,7 @@ public class ChefLogin extends javax.swing.JFrame {
 
         jFormattedTextField5.setText("jFormattedTextField1");
 
-        jButton1.setText("View Order");
+        jButton1.setText("View OrderDetails");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

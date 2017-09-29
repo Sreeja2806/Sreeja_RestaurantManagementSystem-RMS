@@ -36,10 +36,10 @@ public class MenuOperation extends javax.swing.JFrame {
             List<String[]> myEntries = reader.readAll();
             return myEntries;
         }
-        String[][] rowData = importCSV("Menu.csv").toArray(new String[0][]);
-        final String[] columnNames = {"ID", "Name", "Price"};
-        final DefaultTableModel model = new DefaultTableModel(rowData, columnNames);
-        ExportJTable export = new ExportJTable();
+        private String[][] rowData = importCSV("Menu.csv").toArray(new String[0][]);
+        private final String[] columnNames = {"ID", "Category", "Name","Price"};
+        private final DefaultTableModel model = new DefaultTableModel(rowData, columnNames);
+        private ExportJTable export = new ExportJTable();
 
     public MenuOperation() throws IOException {
         initComponents();
@@ -232,7 +232,7 @@ public class MenuOperation extends javax.swing.JFrame {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
-        Object[] row = {menuIdText.getText(), menuNameText.getText(),  menuPriceText.getText()};
+        Object[] row = {menuIdText.getText(), categoryTypeComboBox.getSelectedItem(),menuNameText.getText(),  menuPriceText.getText()};
         model.addRow(row);
         menuTable.setModel(model);
         export.exportJtable(menuTable,"Menu.csv");
@@ -245,8 +245,9 @@ public class MenuOperation extends javax.swing.JFrame {
         if(i >= 0)
         {
             model.setValueAt(menuIdText.getText(), i, 0);
-            model.setValueAt(menuNameText.getText(), i, 1);
-            model.setValueAt(menuPriceText.getText(), i, 2);
+            model.setValueAt(categoryTypeComboBox.getSelectedItem(),i,1);
+            model.setValueAt(menuNameText.getText(), i, 2);
+            model.setValueAt(menuPriceText.getText(), i, 3);
         }
         else{
             System.out.println("Update Error");
@@ -260,13 +261,14 @@ public class MenuOperation extends javax.swing.JFrame {
         int i = menuTable.getSelectedRow();
         if(i >= 0) {
             menuIdText.setText(model.getValueAt(i, 0).toString());
-            menuNameText.setText(model.getValueAt(i, 1).toString());
-            menuPriceText.setText(model.getValueAt(i, 2).toString());
+            categoryTypeComboBox.setSelectedItem(model.getValueAt(i,1).toString());
+            menuNameText.setText(model.getValueAt(i, 2).toString());
+            menuPriceText.setText(model.getValueAt(i, 3).toString());
         }
         else {
             System.out.println("Update Error");
         }
-        export.exportJtable(menuTable,"Menu_Exported.csv");
+        export.exportJtable(menuTable,"Menu.csv");
     }//GEN-LAST:event_updateButtonMouseClicked
 
     private void delButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delButtonActionPerformed

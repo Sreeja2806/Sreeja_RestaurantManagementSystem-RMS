@@ -5,6 +5,7 @@
  */
 package com.rubicon.rms.admin;
 
+import com.rubicon.rms.orders.OrderManagement;
 import com.rubicon.rms.system.Login;
 
 import javax.swing.*;
@@ -55,10 +56,14 @@ public class RestaurantManagement extends javax.swing.JFrame {
         orderMngButton.setBackground(new java.awt.Color(153, 153, 153));
         orderMngButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         orderMngButton.setForeground(new java.awt.Color(51, 51, 51));
-        orderMngButton.setText("Order Management");
+        orderMngButton.setText("OrderDetails Management");
         orderMngButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                orderMngButtonActionPerformed(evt);
+                try {
+                    orderMngButtonActionPerformed(evt);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -188,10 +193,10 @@ public class RestaurantManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_empMngButtonActionPerformed
 
 
-    private void orderMngButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderMngButtonActionPerformed
+    private void orderMngButtonActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_orderMngButtonActionPerformed
         // TODO add your handling code here:
-        //OrderManagement om = new OrderManagement();
-        //om.setVisible(true);
+        OrderManagement om = new OrderManagement();
+        om.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_orderMngButtonActionPerformed
 

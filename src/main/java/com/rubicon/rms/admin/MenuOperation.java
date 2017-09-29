@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  *
- * @author P. Sreeja-VJIT
+ * @author P Sreeja-VJIT
  */
 public class MenuOperation extends javax.swing.JFrame {
         //Import CSV to Table

@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author P. Sreeja-VJIT
+ * @author P Sreeja-VJIT
  */
 class TotalBil {
     private Scanner sc;

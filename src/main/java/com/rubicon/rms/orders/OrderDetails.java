@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author P. Sreeja-VJIT
+ * @author P Sreeja-VJIT
  */
 public class OrderDetails {
     private Scanner scan;

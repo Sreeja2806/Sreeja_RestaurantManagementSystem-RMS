@@ -5,7 +5,11 @@ import com.opencsv.CSVReader;
 import java.io.*;
 import java.util.Scanner;
 
-public class TotalPrice {
+/**
+ *
+ * @author P. Sreeja-VJIT
+ */
+class TotalBil {
     private Scanner sc;
     private Scanner scan;
     private String name;
@@ -17,7 +21,7 @@ public class TotalPrice {
     private double multi;
     private PrintWriter pw;
     private String fileName = "Order.csv";
-    public TotalPrice() throws IOException {
+    TotalBil() throws IOException {
         fullnames = new StringBuilder();
         openFile();
         readFile();
@@ -55,7 +59,7 @@ public class TotalPrice {
 
                 price =orderDetails[1];
 
-                fullnames.append(name + ","+quantity+","+price+ "\n");
+                fullnames.append(name).append(",").append(quantity).append(",").append(price).append("\n");
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -71,25 +75,5 @@ public class TotalPrice {
                 ee.printStackTrace();
             }
         }
-
-//        try{
-//            while(scan.hasNextLine())
-//            {
-//                name = scan.nextLine();
-//                System.out.println(name);
-//                // price = scan.nextLine();
-//
-//                quantity=scan.nextLine();
-//                // dQuantity=Integer.decode(quantity);
-//                //multi=dPrice*dQuantity;
-//                price =scan.nextLine();
-//                fullnames.append(name + "\t"+quantity+"\t"+price+ "\n");
-//            }
-//        }
-//        catch(Exception e){
-//            System.out.println(e);
-//        }
     }
-
-
 }

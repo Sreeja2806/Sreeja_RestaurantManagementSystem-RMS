@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  *
- * @author Pakeeru Sreeja
+ * @author P. Sreeja-VJIT
  */
 public class HostLogin extends javax.swing.JFrame {
 
@@ -288,17 +288,8 @@ public class HostLogin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-//    private void hostDetails(){
-//        Login l = new Login();
-//        String userId = l.Vikas.get(0);
-//        String userName = l.Vikas.get(1);
-//        empIDLabel.setText(userId);
-//        empNameLabel.setText(userName);
-//    }
-
     private void hideColumn(JTable table, String[] cols) {
         for (String col : cols) {
-            //table.removeColumn(table.getColumn(col));
             table.getColumn(col).setPreferredWidth(0);
             table.getColumn(col).setMinWidth(0);
             table.getColumn(col).setWidth(0);
@@ -330,45 +321,6 @@ public class HostLogin extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Successfully Logged Out");
         l.setVisible(true);
     }//GEN-LAST:event_logOutButtonActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(HostLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(HostLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(HostLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(HostLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                try {
-//                    new HostLogin().setVisible(true);
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel NameLabel;

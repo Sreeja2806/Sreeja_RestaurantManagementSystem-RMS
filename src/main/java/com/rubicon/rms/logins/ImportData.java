@@ -5,9 +5,13 @@ import com.opencsv.CSVReader;
 import java.io.*;
 import java.util.List;
 
-public class ImportData {
+/**
+ *
+ * @author P. Sreeja-VJIT
+ */
+class ImportData {
 
-    public List<String[]> importData(String fileName) throws IOException {
+    List<String[]> importData(String fileName) throws IOException {
         File file= new File(fileName);
         PrintWriter pw = null;
         if (!file.exists()){
@@ -19,7 +23,6 @@ public class ImportData {
             pw.close();
         }
         CSVReader reader = new CSVReader(new FileReader(fileName), ',', '\'', 1);
-        List<String[]> myEntries = reader.readAll();
-        return myEntries;
+        return reader.readAll();
     }
 }

@@ -6,24 +6,18 @@
 package com.rubicon.rms.admin;
 
 import com.opencsv.CSVReader;
-
-//import com.opencsv.CSVReader;
-import com.opencsv.CSVWriter;
 import com.rubicon.rms.system.Login;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 
 /**
  *
- * @author Pakeeru Sreeja
+ * @author P. Sreeja-VJIT
  */
 public class EmployeeOperation extends javax.swing.JFrame {
     //Import CSV to Table
@@ -403,47 +397,6 @@ public class EmployeeOperation extends javax.swing.JFrame {
     private void defaultPwdCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_defaultPwdCheckBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_defaultPwdCheckBoxActionPerformed
-
-
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-//         */
-//        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//            if ("Nimbus".equals(info.getName())) {
-//                try {
-//                    UIManager.setLookAndFeel(info.getClassName());
-//                } catch (ClassNotFoundException e) {
-//                    e.printStackTrace();
-//                } catch (InstantiationException e) {
-//                    e.printStackTrace();
-//                } catch (IllegalAccessException e) {
-//                    e.printStackTrace();
-//                } catch (UnsupportedLookAndFeelException e) {
-//                    e.printStackTrace();
-//                }
-//                break;
-//            }
-//        }
-//        //</editor-fold>
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                try {
-//                    new EmployeeOperation().setVisible(true);
-//                } catch (IOException ex) {
-//                    Logger.getLogger(EmployeeOperation.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;

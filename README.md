@@ -1,1 +1,1 @@
-#RestaurantManagementSystem-RMS by Pakeeru Sreeja from VJIT
+#RestaurantManagementSystem-RMS by P. Sreeja-VJIT from VJIT

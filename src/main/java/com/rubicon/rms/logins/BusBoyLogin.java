@@ -7,7 +7,7 @@ package com.rubicon.rms.logins;
 
 /**
  *
- * @author Pakeeru Sreeja
+ * @author P. Sreeja-VJIT
  */
 public class BusBoyLogin extends javax.swing.JFrame {
 
@@ -254,10 +254,6 @@ public class BusBoyLogin extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

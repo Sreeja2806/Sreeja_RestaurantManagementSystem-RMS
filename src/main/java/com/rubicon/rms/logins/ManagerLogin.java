@@ -7,13 +7,13 @@ package com.rubicon.rms.logins;
 
 import com.rubicon.rms.admin.EmployeeOperation;
 import com.rubicon.rms.admin.MenuOperation;
-import com.rubicon.rms.admin.OrderManagement;
+import com.rubicon.rms.admin.OrderOperation;
 
 import java.io.IOException;
 
 /**
  *
- * @author Pakeeru Sreeja
+ * @author P. Sreeja-VJIT
  */
 public class ManagerLogin extends javax.swing.JFrame {
 
@@ -147,15 +147,10 @@ public class ManagerLogin extends javax.swing.JFrame {
 
     private void orderMngButtonActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_orderMngButtonActionPerformed
         // TODO add your handling code here:
-        OrderManagement orderManagement = new OrderManagement();
-        orderManagement.setVisible(true);
+        OrderOperation orderOperation = new OrderOperation();
+        orderOperation.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_orderMngButtonActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton empMngButton;

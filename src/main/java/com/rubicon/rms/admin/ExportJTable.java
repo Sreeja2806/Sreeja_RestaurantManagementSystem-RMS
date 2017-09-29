@@ -9,7 +9,7 @@ import java.io.PrintWriter;
 
 /**
  *
- * @author P Sreeja-VJIT
+ * @author P. Sreeja-VJIT
  */
 public class ExportJTable {
 

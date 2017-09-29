@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  *
- * @author P. Sreeja-VJIT
+ * @author P Sreeja VJIT
  */
 class ImportData {
 

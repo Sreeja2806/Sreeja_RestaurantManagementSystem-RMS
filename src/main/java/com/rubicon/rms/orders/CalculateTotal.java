@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author P. Sreeja-VJIT
+ * @author P Sreeja VJIT
  */
 public class CalculateTotal {
     private Scanner scan;

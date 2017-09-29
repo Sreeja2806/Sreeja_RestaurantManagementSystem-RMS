@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author P. Sreeja-VJIT
+ * @author P Sreeja VJIT
  */
 public class GenerateReceipt {
     private Scanner sc;

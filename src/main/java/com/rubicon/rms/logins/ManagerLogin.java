@@ -13,7 +13,7 @@ import java.io.IOException;
 
 /**
  *
- * @author P. Sreeja-VJIT
+ * @author P Sreeja VJIT
  */
 public class ManagerLogin extends javax.swing.JFrame {
 

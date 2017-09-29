@@ -5,6 +5,11 @@
  */
 package com.rubicon.rms.logins;
 
+import com.rubicon.rms.admin.EmployeeOperation;
+import com.rubicon.rms.admin.MenuOperation;
+
+import java.io.IOException;
+
 /**
  *
  * @author Pakeeru Sreeja
@@ -27,21 +32,120 @@ public class ManagerLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        menuMngButton = new javax.swing.JButton();
+        empMngButton = new javax.swing.JButton();
+        orderMngButton = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Manager Console", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+
+        menuMngButton.setBackground(new java.awt.Color(153, 153, 153));
+        menuMngButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        menuMngButton.setForeground(new java.awt.Color(51, 51, 51));
+        menuMngButton.setText("Menu Management");
+        menuMngButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                try {
+                    menuMngButtonActionPerformed(evt);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        empMngButton.setBackground(new java.awt.Color(153, 153, 153));
+        empMngButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        empMngButton.setForeground(new java.awt.Color(51, 51, 51));
+        empMngButton.setText("Employee Management");
+        empMngButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                try {
+                    empMngButtonActionPerformed(evt);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        orderMngButton.setBackground(new java.awt.Color(153, 153, 153));
+        orderMngButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        orderMngButton.setForeground(new java.awt.Color(51, 51, 51));
+        orderMngButton.setText("Order Management");
+        orderMngButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orderMngButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(empMngButton, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
+                    .addComponent(menuMngButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(orderMngButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(35, 35, 35))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addComponent(menuMngButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(empMngButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(orderMngButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(70, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void menuMngButtonActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_menuMngButtonActionPerformed
+        // TODO add your handling code here:
+        //MenuManagement im = new MenuManagement();
+        MenuOperation im = new MenuOperation();
+        im.setVisible(true);
+        this.dispose();
+
+    }//GEN-LAST:event_menuMngButtonActionPerformed
+
+    private void empMngButtonActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_empMngButtonActionPerformed
+        // TODO add your handling code here:
+        //EmployeeManagement l = new EmployeeManagement();
+        EmployeeOperation l = new EmployeeOperation();
+        l.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_empMngButtonActionPerformed
+
+    private void orderMngButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderMngButtonActionPerformed
+        // TODO add your handling code here:
+        //OrderManagement om = new OrderManagement();
+        //om.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_orderMngButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -49,5 +153,9 @@ public class ManagerLogin extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton empMngButton;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton menuMngButton;
+    private javax.swing.JButton orderMngButton;
     // End of variables declaration//GEN-END:variables
 }

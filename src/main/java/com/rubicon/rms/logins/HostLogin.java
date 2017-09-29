@@ -22,9 +22,9 @@ import java.util.List;
 public class HostLogin extends javax.swing.JFrame {
 
     ImportData i = new ImportData();
-    String[][] rowData =  i.importData("Order.csv").toArray(new String[0][]);
-    final String[] columnNames = {"HostId","BusBoyID","ManagerId","ChefId","LineCookId","ServerId","CustomerId","Customer Name","No: Persons","TableId","OrderId","Order Details","Bill","Feedback","Status"};
-    final String[] hideCols = {"HostId","BusBoyID","ManagerId","ChefId","LineCookId","ServerId","No: Persons","Order Details","Bill","Feedback","Status"};
+    String[][] rowData =  i.importData("OrderDetails.csv").toArray(new String[0][]);
+    final String[] columnNames = {"HostId","BusBoyID","ManagerId","ChefId","LineCookId","ServerId","CustomerId","Customer Name","No: Persons","TableId","OrderId","OrderDetails Details","Bill","Feedback","Status"};
+    final String[] hideCols = {"HostId","BusBoyID","ManagerId","ChefId","LineCookId","ServerId","No: Persons","OrderDetails Details","Bill","Feedback","Status"};
     final DefaultTableModel model = new DefaultTableModel(rowData, columnNames);
     ExportJTable export = new ExportJTable();
 
@@ -319,7 +319,7 @@ public class HostLogin extends javax.swing.JFrame {
         model.addRow(row);
         //hideColumn(submittedTable,hideCols);
         submittedTable.setModel(model);
-        export.exportJtable(submittedTable,"Order.csv");
+        export.exportJtable(submittedTable,"OrderDetails.csv");
     //export
     }//GEN-LAST:event_bookButtonActionPerformed
 

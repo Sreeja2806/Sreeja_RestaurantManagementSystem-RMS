@@ -5,7 +5,7 @@ import com.opencsv.CSVReader;
 import java.io.*;
 import java.util.Scanner;
 
-class OrderDetails {
+public class OrderDetails {
     //  protected OrderManagement o = new OrderManagement();
     private Scanner scan;
     private String srchName;

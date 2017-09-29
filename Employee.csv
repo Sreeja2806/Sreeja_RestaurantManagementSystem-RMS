@@ -6,3 +6,4 @@ ID,Name,EmployeeType,Password,Salary
 1005,Mohan,Manager,Manager123$,50000
 1006,Shyam,Manager,,Manager
 1007,Sai,Chef,,Manager
+1008,Venkat,Item 3,,50000

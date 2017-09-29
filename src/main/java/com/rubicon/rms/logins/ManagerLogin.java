@@ -7,6 +7,7 @@ package com.rubicon.rms.logins;
 
 import com.rubicon.rms.admin.EmployeeOperation;
 import com.rubicon.rms.admin.MenuOperation;
+import com.rubicon.rms.admin.OrderManagement;
 
 import java.io.IOException;
 
@@ -75,7 +76,11 @@ public class ManagerLogin extends javax.swing.JFrame {
         orderMngButton.setText("Order Management");
         orderMngButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                orderMngButtonActionPerformed(evt);
+                try {
+                    orderMngButtonActionPerformed(evt);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -140,10 +145,10 @@ public class ManagerLogin extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_empMngButtonActionPerformed
 
-    private void orderMngButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderMngButtonActionPerformed
+    private void orderMngButtonActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_orderMngButtonActionPerformed
         // TODO add your handling code here:
-        //OrderManagement om = new OrderManagement();
-        //om.setVisible(true);
+        OrderManagement orderManagement = new OrderManagement();
+        orderManagement.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_orderMngButtonActionPerformed
 
